@@ -1,3 +1,4 @@
+import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
 import { VerificarEmailComponent } from './verificar-email/verificar-email.component';
 import { SignupComponent } from './signup/signup.component';
 import { TelaPrincipalComponent } from './tela-principal/tela-principal.component';
@@ -21,6 +22,9 @@ const routes: Routes = [{
 },
 {
   path:'verificarEmail',component:VerificarEmailComponent
+},
+{
+  path:'senha',component:EsqueciSenhaComponent
 }
 
 ];

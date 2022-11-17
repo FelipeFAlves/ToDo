@@ -26,6 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { SignupComponent } from './signup/signup.component';
 import { VerificarEmailComponent } from './verificar-email/verificar-email.component';
+import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { VerificarEmailComponent } from './verificar-email/verificar-email.compo
     LoginComponent,
     TelaPrincipalComponent,
     SignupComponent,
-    VerificarEmailComponent
+    VerificarEmailComponent,
+    EsqueciSenhaComponent
   ],
   imports: [
     BrowserModule,

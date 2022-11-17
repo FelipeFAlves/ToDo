@@ -1,8 +1,18 @@
 .example-card {
-    max-width: 400px;
+    width: 400px;
 }
 
 .column{
     display: flex;
     flex-direction:column;
+}
+
+
+.interacao{
+    display: flex;
+    /* Justify é na horizontal */
+    justify-content: center;
+    /* align é na vertical */
+    align-items: center;
+    height: 100vh;
 }

@@ -1,0 +1,22 @@
+<div class="interacao">
+    <mat-card class="form">
+        <div class="column">
+            <mat-card-header>
+                <mat-card-title>Esqueci a senha</mat-card-title>
+            </mat-card-header>
+    
+            <mat-card-content>
+                <div class="column">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input id="tamanho" type="email" matInput #email placeholder="Ex. fulano@gmail.com">
+                    </mat-form-field>
+                    <button (click)="senha(email.value)" mat-stroked-button>Enviar troca de senha</button>
+                </div>
+                <button mat-button (click)="voltar()">Voltar</button>
+            </mat-card-content>
+            
+        </div>
+        
+    </mat-card>
+</div>

@@ -1,0 +1,27 @@
+.form{
+  width: 500px;
+
+}
+.column{
+  display: flex;
+  flex-direction: column;
+}
+.interacao{
+  display: flex;
+  /* Justify é na horizontal */
+  justify-content: center;
+  /* align é na vertical */
+  align-items: center;
+  height: 100vh;
+}
+
+.example-card {
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
