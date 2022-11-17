@@ -26,4 +26,8 @@ export class LoginComponent implements OnInit {
     this.AuthService.GoogleAuth();
   }
 
+  esquecisenha(){
+    this.router.navigate(['senha'])
+  }
+
 }

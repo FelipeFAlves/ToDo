@@ -1,0 +1,21 @@
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.margem{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+.interacao{
+    display: flex;
+    /* Justify é na horizontal */
+    justify-content: center;
+    /* align é na vertical */
+    align-items: center;
+    height: 100vh;
+}

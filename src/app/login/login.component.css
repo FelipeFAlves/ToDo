@@ -1,5 +1,5 @@
 .example-card {
-    max-width: 400px;
+    width: 400px;
 }
 
 .espaço{
@@ -17,4 +17,13 @@
 
 .botao{
     margin-bottom: 5px;
+}
+
+.interacao{
+    display: flex;
+    /* Justify é na horizontal */
+    justify-content: center;
+    /* align é na vertical */
+    align-items: center;
+    height: 100vh;
 }
