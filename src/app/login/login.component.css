@@ -1,0 +1,20 @@
+.example-card {
+    max-width: 400px;
+}
+
+.espaço{
+    margin-right: 8px;
+}
+
+.cor{
+    border: none;
+}
+
+.column{
+    display: flex;
+    flex-direction:column;
+}
+
+.botao{
+    margin-bottom: 5px;
+}
