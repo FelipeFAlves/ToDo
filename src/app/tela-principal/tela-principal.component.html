@@ -1,11 +1,35 @@
 <div class="body">
     <div class="head">
         <h1>Meu Dia</h1>
-        <h2>Dia(Semana),Dia(Mês) Mês</h2>
+        <h2>{{data}}</h2>
     </div>
 
     <div class="table">
         <h1>Table fica aqui</h1>
-        <Button>AQUI FICA O ICONE DE ADD NOVA TAREFA</Button>
+
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Adicionar uma nova tarefa
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="column">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nome</mat-label>
+                    <input matInput #nome type="text" >
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Tipo</mat-label>
+                    <input matInput #tipo type="text" placeholder="Compras">
+                </mat-form-field>
+
+                <button mat-button (click)="Enviar(nome.value,tipo.value)">Enviar</button>
+            </div>
+            
+
+        </mat-expansion-panel>
+
     </div>
 </div>

@@ -25,6 +25,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 //Components
 import { SignupComponent } from './signup/signup.component';
@@ -54,7 +55,8 @@ import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

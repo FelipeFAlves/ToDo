@@ -1,3 +1,4 @@
+import { FirestoreService } from './../shared/services/firestore.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -7,14 +8,16 @@ import { AuthService } from '../shared/services/auth.service';
   styleUrls: ['./tela-principal.component.css']
 })
 export class TelaPrincipalComponent implements OnInit {
-
-  constructor(private afs:AuthService) { }
+  data = new Date().toLocaleDateString()
+  constructor(private afs:FirestoreService) { }
 
   ngOnInit(): void {
-    console.log(this.afs.userData)
   }
 
-  sair(){
-    this.afs.SignOut()
+  
+  Enviar(tarefa:string,tipo:any){
+    this.afs.addTarefa(tarefa,tipo)
   }
+
+
 }
