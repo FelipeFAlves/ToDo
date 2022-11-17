@@ -1,0 +1,14 @@
+.head{
+    background-color: red;
+    height: 25%;
+}
+.table{
+    background-color: blue;
+    height: 100%
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

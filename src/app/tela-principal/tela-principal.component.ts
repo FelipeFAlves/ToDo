@@ -11,10 +11,10 @@ export class TelaPrincipalComponent implements OnInit {
   constructor(private afs:AuthService) { }
 
   ngOnInit(): void {
+    console.log(this.afs.userData)
   }
 
   sair(){
     this.afs.SignOut()
   }
-
 }

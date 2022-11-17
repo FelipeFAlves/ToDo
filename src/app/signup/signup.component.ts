@@ -16,8 +16,8 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  cadastrar(email:string,senha:string){
-    this.afs.SignUp(email,senha);
+  cadastrar(email:string,senha:string,nome:string){
+    this.afs.SignUp(email,senha,nome);
   }
   
   voltar(){

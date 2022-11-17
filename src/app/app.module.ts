@@ -24,6 +24,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
+
+//Components
 import { SignupComponent } from './signup/signup.component';
 import { VerificarEmailComponent } from './verificar-email/verificar-email.component';
 import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
@@ -50,7 +53,8 @@ import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
     MatCardModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

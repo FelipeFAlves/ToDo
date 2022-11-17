@@ -57,14 +57,14 @@ export class AuthService {
   }
   
   // Sign up with email/password
-  SignUp(email: string, password: string) {
+  SignUp(email: string, password: string,nome:string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         this.SendVerificationMail();
-        this.SetUserData(result.user);
+        this.SetUserData(result.user,nome);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -116,14 +116,14 @@ export class AuthService {
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user: any) {
+  SetUserData(user: any,nome = '') {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      displayName: nome,
       emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {
