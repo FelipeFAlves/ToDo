@@ -17,8 +17,13 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.status.mostrarMenu.subscribe(
-      mostrar => this.menu = mostrar
+      // mostrar => this.menu = mostrar
+      this.menu = true
     );
+  }
+
+  sair(){
+    this.status.SignOut()
   }
 
 }

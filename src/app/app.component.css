@@ -5,4 +5,14 @@
     left: 0;
     right: 0;
     background: gray;
-  }
+}
+
+.largura{
+  width: 200px;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
