@@ -8,14 +8,19 @@ export class FirestoreService {
 
   constructor(private firestore:AngularFirestore) { }
 
-  addTarefa(tarefa:string,tipo:any){
+  addTarefa(tarefa:string,descricao:any,quem:any){
     let id = this.firestore.createId()
-    this.firestore.collection('Tarefas').doc(id ).set({
+    this.firestore.collection(`users/${quem}/Tarefas`).doc(id).set({
       uid:id,
       nome:tarefa,
-      tipo:tipo,
+      descricao:descricao,
       stado:false
     })
     window.alert('Cadastrado com sucesso')
   }
+
+  tarefas(quem:any){
+    return this.firestore.collection(`users/${quem}/Tarefas`).get()
+  }
+
 }

@@ -26,6 +26,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 //Components
 import { SignupComponent } from './signup/signup.component';
@@ -56,7 +59,10 @@ import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

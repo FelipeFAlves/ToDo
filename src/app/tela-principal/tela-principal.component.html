@@ -5,7 +5,32 @@
     </div>
 
     <div class="table">
-        <h1>Table fica aqui</h1>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- Estado (concluido ou não) -->
+            <ng-container matColumnDef="Estado">
+              <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-checkbox color="primary" class="example-margin"></mat-checkbox>
+                </td>
+            </ng-container>
+          
+            <!-- Titulo da tarefa -->
+            <ng-container matColumnDef="Titulo">
+              <th mat-header-cell *matHeaderCellDef> Titulo </th>
+              <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+            </ng-container>
+          
+            <!-- Descrição da tarefa -->
+            <ng-container matColumnDef="Descrição">
+              <th mat-header-cell *matHeaderCellDef> Descrição </th>
+              <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+            </ng-container>
+
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
 
         <mat-expansion-panel hideToggle>
             <mat-expansion-panel-header>
@@ -21,13 +46,12 @@
                 </mat-form-field>
     
                 <mat-form-field appearance="fill">
-                    <mat-label>Tipo</mat-label>
-                    <input matInput #tipo type="text" placeholder="Compras">
+                    <mat-label>Descrição</mat-label>
+                    <input matInput #tipo type="text" placeholder="Descreva em breves palavras a sua tarefa">
                 </mat-form-field>
 
                 <button mat-button (click)="Enviar(nome.value,tipo.value)">Enviar</button>
             </div>
-            
 
         </mat-expansion-panel>
 
