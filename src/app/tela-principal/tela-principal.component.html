@@ -27,6 +27,22 @@
               <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
             </ng-container>
 
+            <!-- Categoria da tarefa -->
+            <ng-container matColumnDef="Categoria">
+              <th mat-header-cell *matHeaderCellDef> Categoria </th>
+              <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+            </ng-container>
+
+            <!-- Excluir -->
+            <ng-container matColumnDef="Excluir">
+              <th mat-header-cell *matHeaderCellDef> Excluir </th>
+              <td mat-cell *matCellDef="let element"> 
+                <button (click)="Excluir(element.uid)">
+                  <mat-icon aria-hidden="false" fontIcon="close"></mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -50,7 +66,18 @@
                     <input matInput #tipo type="text" placeholder="Descreva em breves palavras a sua tarefa">
                 </mat-form-field>
 
-                <button mat-button (click)="Enviar(nome.value,tipo.value)">Enviar</button>
+                <mat-form-field appearance="fill">
+                  <mat-label>Opção</mat-label>
+
+                  <mat-select #coisa>
+                    <mat-option *ngFor="let aaa of opcao" [value]="aaa">
+                      {{aaa.nome}}
+                    </mat-option>
+                  </mat-select>
+
+              </mat-form-field>
+
+                <button mat-button (click)="Enviar(nome.value,tipo.value,coisa.value)">Enviar</button>
             </div>
 
         </mat-expansion-panel>

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(public AuthService:AuthService,public router: Router) { }
 
   ngOnInit(): void {
+    
   }
   hide = true;
 

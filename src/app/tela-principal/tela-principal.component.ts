@@ -1,6 +1,6 @@
 import { AuthService } from './../shared/services/auth.service';
 import { FirestoreService } from './../shared/services/firestore.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -10,29 +10,69 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 })
 export class TelaPrincipalComponent implements OnInit {
   data = new Date().toLocaleDateString()
-  
   constructor(private afs:FirestoreService,private AuthService:AuthService) { }
 
   dataSource= new MatTableDataSource<any>();
-  ngOnInit(): void {
-    this.Tabela()
+  async ngOnInit(): Promise<void> {
+    this.Tabela();
+    this.Opcoes();
   }
 
-  displayedColumns: string[] = ['Estado', 'Titulo', 'Descrição'];
+  opcao:any =  [];
+  displayedColumns: string[] = ['Estado', 'Titulo', 'Descrição','Categoria','Excluir'];
   @ViewChild(MatTable) table!: MatTable<any>;
   
 
-  Enviar(tarefa:string,tipo:any){
-    this.afs.addTarefa(tarefa,tipo,this.AuthService.userData.uid)
+  Enviar(tarefa:string,tipo:any,opcao: any){
+    //Pegar o id do usuário
+    
+    var opcaoTraduzida = JSON.stringify(opcao['nome'])
+    
+    var usuario = JSON.parse(localStorage.getItem('user')!)['uid'];
+    this.afs.addTarefa(tarefa,tipo,usuario,opcaoTraduzida)
+    window.confirm('Cadastrado com sucesso');
   }
 
   Tabela(){
-    this.afs.tarefas(this.AuthService.userData.uid).subscribe((tarefas) =>{
+    //Pegar o id do usuário
+    var usuario = JSON.parse(localStorage.getItem('user')!)['uid'];
+    this.afs.trabalho(usuario).subscribe((trabalhos) =>{
+      trabalhos.forEach((trabalho:any) =>{
+        this.dataSource.data.push(trabalho.data())
+        console.log(this.dataSource)
+      })
+    })
+    this.afs.pessoal(usuario).subscribe((tarefas) =>{
+      tarefas.forEach((tarefa:any) =>{
+        this.dataSource.data.push(tarefa.data())
+        console.log(this.dataSource)
+      })
+    })
+    this.afs.faculdade(usuario).subscribe((tarefas) =>{
+      tarefas.forEach((tarefa:any) =>{
+        this.dataSource.data.push(tarefa.data())
+        console.log(this.dataSource)
+      })
+    })
+    this.afs.casa(usuario).subscribe((tarefas) =>{
       tarefas.forEach((tarefa:any) =>{
         this.dataSource.data.push(tarefa.data())
         console.log(this.dataSource)
       })
       this.table.renderRows();
+    })
+  }
+
+  Excluir(id:string){
+    this.afs.excluir(id);
+  }
+
+  Opcoes(){
+    var usuario = JSON.parse(localStorage.getItem('user')!)['uid'];
+    this.afs.tarefas(usuario).subscribe((tarefas) =>{
+      tarefas.forEach((tarefa:any) =>[
+        this.opcao.push(tarefa.data())
+      ])
     })
   }
 

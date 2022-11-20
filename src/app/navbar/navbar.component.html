@@ -1,0 +1,19 @@
+<mat-sidenav-container class="example-container" >
+    <mat-sidenav class="largura" hidden mode="side" opened>
+      
+      <div class="column">
+        <button (click)="sair()">sair</button>
+        <button (click)="sair()">sair</button>
+        <button (click)="sair()">sair</button>
+        <button (click)="sair()">sair</button>
+        <br>
+        <mat-divider></mat-divider>
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+  
+      <router-outlet></router-outlet>
+      
+    </mat-sidenav-content>
+</mat-sidenav-container>
