@@ -1,3 +1,4 @@
+import { NavbarComponent } from './navbar/navbar.component';
 import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
 import { VerificarEmailComponent } from './verificar-email/verificar-email.component';
 import { SignupComponent } from './signup/signup.component';
@@ -15,9 +16,6 @@ const routes: Routes = [{
   path:'login',component:LoginComponent
 },
 {
-  path:'principal',component:TelaPrincipalComponent
-},
-{
   path:'cadastrar',component:SignupComponent
 },
 {
@@ -25,7 +23,18 @@ const routes: Routes = [{
 },
 {
   path:'senha',component:EsqueciSenhaComponent
-}
+},
+{
+  path:'home',component:NavbarComponent,
+    children:[
+      {path: '',
+      redirectTo: 'principal',
+      pathMatch: 'full'},
+      {
+        path:'principal',component:TelaPrincipalComponent
+      }
+    ]
+},
 
 ];
 

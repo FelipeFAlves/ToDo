@@ -9,18 +9,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CRUD-ToDo';
-  menu: boolean = false
   
   constructor(public status:AuthService) { 
 
   }
 
   ngOnInit(): void {
-    this.status.mostrarMenu.subscribe(
-      // mostrar => this.menu = mostrar
-      this.menu = true
-    );
+    
   }
+  
+  
+  
 
   sair(){
     this.status.SignOut()
