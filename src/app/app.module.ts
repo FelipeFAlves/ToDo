@@ -30,6 +30,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSortModule} from '@angular/material/sort';
 
 //Components
 import { SignupComponent } from './signup/signup.component';
@@ -66,7 +67,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatTableModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

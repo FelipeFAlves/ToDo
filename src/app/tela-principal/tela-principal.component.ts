@@ -2,6 +2,7 @@ import { AuthService } from './../shared/services/auth.service';
 import { FirestoreService } from './../shared/services/firestore.service';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatSort, Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-tela-principal',
@@ -10,27 +11,32 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 })
 export class TelaPrincipalComponent implements OnInit {
   data = new Date().toLocaleDateString()
+
+  
+  
   constructor(private afs:FirestoreService,private AuthService:AuthService) { }
 
   dataSource= new MatTableDataSource<any>();
-  async ngOnInit(): Promise<void> {
+  
+  ngOnInit():void{
     this.Tabela();
-    this.Opcoes();
+    this.Opcoes();  
   }
 
   opcao:any =  [];
-  displayedColumns: string[] = ['Estado', 'Titulo', 'Descrição','Categoria','Excluir'];
+  displayedColumns: string[] = ['Estado', 'Titulo', 'Descrição','Categoria','Data','Excluir'];
   @ViewChild(MatTable) table!: MatTable<any>;
+  @ViewChild(MatSort) sort!: MatSort;
   
 
-  Enviar(tarefa:string,tipo:any,opcao: any){
+  Enviar(tarefa:string,tipo:any,opcao: any,data:string){
+    let opcaoTraduzida = JSON.stringify(opcao['nome'])
+    let novoTexto = opcaoTraduzida.replace(/"/g,'')
     //Pegar o id do usuário
-    
-    var opcaoTraduzida = JSON.stringify(opcao['nome'])
-    
     var usuario = JSON.parse(localStorage.getItem('user')!)['uid'];
-    this.afs.addTarefa(tarefa,tipo,usuario,opcaoTraduzida)
-    window.confirm('Cadastrado com sucesso');
+    this.afs.addTarefa(tarefa,tipo,usuario,novoTexto,data)
+    this.dataSource.data = []
+    this.Tabela();
   }
 
   Tabela(){
@@ -39,43 +45,64 @@ export class TelaPrincipalComponent implements OnInit {
     this.afs.trabalho(usuario).subscribe((trabalhos) =>{
       trabalhos.forEach((trabalho:any) =>{
         this.dataSource.data.push(trabalho.data())
-        console.log(this.dataSource)
-      })
+      });
     })
     this.afs.pessoal(usuario).subscribe((tarefas) =>{
       tarefas.forEach((tarefa:any) =>{
         this.dataSource.data.push(tarefa.data())
-        console.log(this.dataSource)
-      })
+      });
     })
     this.afs.faculdade(usuario).subscribe((tarefas) =>{
       tarefas.forEach((tarefa:any) =>{
         this.dataSource.data.push(tarefa.data())
-        console.log(this.dataSource)
-      })
+      });
     })
     this.afs.casa(usuario).subscribe((tarefas) =>{
       tarefas.forEach((tarefa:any) =>{
         this.dataSource.data.push(tarefa.data())
-        console.log(this.dataSource)
-      })
+      });
       this.table.renderRows();
+      this.sortData({active:'data', direction:'desc'})
     })
   }
 
-  Excluir(id:string){
-    this.afs.excluir(id);
+  Excluir(categoria:string,id:string){
+    this.afs.excluir(categoria,id);
+    this.dataSource.data = []
+    this.Tabela();
   }
 
   Opcoes(){
-    var usuario = JSON.parse(localStorage.getItem('user')!)['uid'];
-    this.afs.tarefas(usuario).subscribe((tarefas) =>{
+    this.afs.tarefas().subscribe((tarefas) =>{
       tarefas.forEach((tarefa:any) =>[
         this.opcao.push(tarefa.data())
       ])
     })
   }
 
+  sortData(sort: Sort) {
+    const data = this.dataSource.data;
+    if (!sort.active || sort.direction === '') {
+      this.dataSource.data = data;
+      return;
+    }
+
+    this.dataSource.data = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'data':
+          return compare(a.data, b.data, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
 
 
+}
+
+function compare(a: string, b:string, isAsc: boolean) {
+  var aa = a.split('/').reverse().join();
+  var bb = b.split('/').reverse().join();
+  return (aa < bb ? -1 : 1) * (isAsc ? 1 : -1);
 }

@@ -27,9 +27,11 @@ const routes: Routes = [{
 {
   path:'home',component:NavbarComponent,
     children:[
-      {path: '',
-      redirectTo: 'principal',
-      pathMatch: 'full'},
+      {
+        path: '',
+        redirectTo: 'principal',
+        pathMatch: 'full'
+      },
       {
         path:'principal',component:TelaPrincipalComponent
       }
@@ -37,8 +39,6 @@ const routes: Routes = [{
 },
 
 ];
-
-  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
