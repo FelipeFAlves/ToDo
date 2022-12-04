@@ -44,23 +44,52 @@ export class TelaPrincipalComponent implements OnInit {
     var usuario = JSON.parse(localStorage.getItem('user')!)['uid'];
     this.afs.trabalho(usuario).subscribe((trabalhos) =>{
       trabalhos.forEach((trabalho:any) =>{
-        this.dataSource.data.push(trabalho.data())
+        if(trabalho.data()['data'] == this.data){
+          this.dataSource.data.push(trabalho.data())
+        }
       });
     })
+
     this.afs.pessoal(usuario).subscribe((tarefas) =>{
       tarefas.forEach((tarefa:any) =>{
-        this.dataSource.data.push(tarefa.data())
+        if(tarefa.data()['data'] ==  this.data){
+          this.dataSource.data.push(tarefa.data())
+        }
       });
     })
+
     this.afs.faculdade(usuario).subscribe((tarefas) =>{
       tarefas.forEach((tarefa:any) =>{
-        this.dataSource.data.push(tarefa.data())
+        if(tarefa.data()['data'] ==  this.data){
+          this.dataSource.data.push(tarefa.data())
+        }
       });
     })
+
     this.afs.casa(usuario).subscribe((tarefas) =>{
       tarefas.forEach((tarefa:any) =>{
-        this.dataSource.data.push(tarefa.data())
+        if(tarefa.data()['data'] ==  this.data){
+          this.dataSource.data.push(tarefa.data())
+        }
       });
+      
+      var aux: any[] = []
+      this.dataSource.data.forEach((titulo =>{
+        aux.push(titulo['nome'])
+      }))
+
+      if(this.dataSource.data.length != 0){
+        if(Notification.permission === 'granted'){
+          showNotification(aux);
+        } else if(Notification.permission !=='denied'){
+          Notification.requestPermission().then(permission =>{
+            if(permission === 'granted'){
+              showNotification(1);
+            }
+          })
+        }
+      }
+
       this.table.renderRows();
       this.sortData({active:'data', direction:'desc'})
     })
@@ -105,4 +134,16 @@ function compare(a: string, b:string, isAsc: boolean) {
   var aa = a.split('/').reverse().join();
   var bb = b.split('/').reverse().join();
   return (aa < bb ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
+function showNotification(aaa:any){
+  const notification = new Notification('Você tem tarefas para hoje!',{
+    body: `${aaa.length} Tarefas Pendentes`
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      // The tab has become visible so clear the now-stale Notification.
+      notification.close();
+    }
+  });
 }
