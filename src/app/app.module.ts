@@ -29,11 +29,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSortModule} from '@angular/material/sort';
 
 //Components
 import { SignupComponent } from './signup/signup.component';
 import { VerificarEmailComponent } from './verificar-email/verificar-email.component';
 import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
     MatExpansionModule,
     MatTableModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSelectModule,
+    MatSortModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
