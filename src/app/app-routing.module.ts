@@ -6,6 +6,10 @@ import { TelaPrincipalComponent } from './tela-principal/tela-principal.componen
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TelaFaculdadeComponent } from './tela-faculdade/tela-faculdade.component';
+import { TelaCasaComponent } from './tela-casa/tela-casa.component';
+import { TelaPessoalComponent } from './tela-pessoal/tela-pessoal.component';
+import { TelaTrabalhoComponent } from './tela-trabalho/tela-trabalho.component';
 
 const routes: Routes = [{
   path: '',
@@ -34,6 +38,18 @@ const routes: Routes = [{
       },
       {
         path:'principal',component:TelaPrincipalComponent
+      },
+      {
+        path:'faculdade',component:TelaFaculdadeComponent
+      },
+      {
+        path:'casa',component:TelaCasaComponent
+      },
+      {
+        path:'pessoal',component:TelaPessoalComponent
+      },
+      {
+        path:'trabalho',component:TelaTrabalhoComponent
       }
     ]
 },

@@ -1,0 +1,98 @@
+<div class="body">
+    <div class="head">
+        <h1>Tarefas Agendadas</h1>
+        <h1>Faculdade</h1>
+        <h2>{{data}}</h2>
+    </div>
+  
+    <div class="table">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" matSortDisableClear>
+  
+            <!-- Estado (concluido ou não) -->
+            <ng-container matColumnDef="Estado">
+              <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-checkbox color="primary" class="example-margin"></mat-checkbox>
+                </td>
+            </ng-container>
+          
+            <!-- Titulo da tarefa -->
+            <ng-container matColumnDef="Titulo">
+              <th mat-header-cell *matHeaderCellDef> Titulo </th>
+              <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+            </ng-container>
+          
+            <!-- Descrição da tarefa -->
+            <ng-container matColumnDef="Descrição">
+              <th mat-header-cell *matHeaderCellDef > Descrição </th>
+              <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+            </ng-container>
+  
+            <!-- Categoria da tarefa -->
+            <ng-container matColumnDef="Categoria">
+              <th mat-header-cell *matHeaderCellDef> Categoria </th>
+              <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+            </ng-container>
+  
+            <!-- Categoria da tarefa -->
+            <ng-container matColumnDef="Data">
+              <th mat-header-cell *matHeaderCellDef> Data </th>
+              <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+            </ng-container>
+  
+            <!-- Excluir -->
+            <ng-container matColumnDef="Excluir">
+              <th mat-header-cell *matHeaderCellDef> Excluir </th>
+              <td mat-cell *matCellDef="let element"> 
+                <button (click)="Excluir(element.categoria,element.uid)">
+                  <mat-icon aria-hidden="false" fontIcon="close"></mat-icon>
+                </button>
+              </td>
+            </ng-container>
+  
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+  
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Adicionar uma nova tarefa
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+  
+            <div class="column">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nome</mat-label>
+                    <input matInput #nome type="text" >
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Descrição</mat-label>
+                    <input matInput #tipo type="text" placeholder="Descreva em breves palavras a sua tarefa">
+                </mat-form-field>
+  
+                <mat-form-field appearance="fill">
+                  <mat-label>Data</mat-label>
+                  <input matInput #dataFim type="date" placeholder="Escolha a data da tarefa">
+                </mat-form-field>
+  
+                <mat-form-field appearance="fill">
+                  <mat-label>Opção</mat-label>
+  
+                  <mat-select #coisa>
+                    <mat-option *ngFor="let aaa of opcao" [value]="aaa">
+                      {{aaa.nome}}
+                    </mat-option>
+                  </mat-select>
+  
+              </mat-form-field>
+  
+                <button mat-button (click)="Enviar(nome.value,tipo.value,coisa.value,dataFim.value)">Enviar</button>
+            </div>
+  
+        </mat-expansion-panel>
+  
+    </div>
+  </div>

@@ -37,6 +37,10 @@ import { SignupComponent } from './signup/signup.component';
 import { VerificarEmailComponent } from './verificar-email/verificar-email.component';
 import { EsqueciSenhaComponent } from './esqueci-senha/esqueci-senha.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TelaTrabalhoComponent } from './tela-trabalho/tela-trabalho.component';
+import { TelaPessoalComponent } from './tela-pessoal/tela-pessoal.component';
+import { TelaFaculdadeComponent } from './tela-faculdade/tela-faculdade.component';
+import { TelaCasaComponent } from './tela-casa/tela-casa.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     SignupComponent,
     VerificarEmailComponent,
     EsqueciSenhaComponent,
-    NavbarComponent
+    NavbarComponent,
+    TelaTrabalhoComponent,
+    TelaPessoalComponent,
+    TelaFaculdadeComponent,
+    TelaCasaComponent
   ],
   imports: [
     BrowserModule,
