@@ -1,9 +1,23 @@
-.head{
-    background-color: red;
-    height: 25%;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.head h1,h2{
+    display: flex;
+    justify-content: left;
+    margin-left: 3%;
+    margin-top: 30px;
+    font-size: 35px;
+    color: white;
+    font-family: 'Open Sans'
 }
+
+.body{
+    background-image: url('../../assets/img/praias-brasil-sancho.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .table{
-    background-color: blue;
     height: 100%
 }
 
@@ -21,3 +35,27 @@
 table {
     width: 100%;
 }
+
+:host ::ng-deep .mat-expansion-panel{
+    margin-left: 3%;
+    margin-top: 5%;
+    width: 95%;
+    background-color: rgb(0,0,0,0.5);
+    color: white;
+}
+
+:host ::ng-deep .mat-expansion-panel-header-title {
+    color: white;
+  }
+
+:host ::ng-deep .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+}
+
+.espaço{
+    margin-right: 5px;
+}
+
+
+
