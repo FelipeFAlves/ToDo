@@ -80,11 +80,11 @@ export class TelaPrincipalComponent implements OnInit {
 
       if(this.dataSource.data.length != 0){
         if(Notification.permission === 'granted'){
-          showNotification(aux);
+          // showNotification(aux);
         } else if(Notification.permission !=='denied'){
           Notification.requestPermission().then(permission =>{
             if(permission === 'granted'){
-              showNotification(1);
+              // showNotification(1);
             }
           })
         }
@@ -136,14 +136,14 @@ function compare(a: string, b:string, isAsc: boolean) {
   return (aa < bb ? -1 : 1) * (isAsc ? 1 : -1);
 }
 
-function showNotification(aaa:any){
-  const notification = new Notification('Você tem tarefas para hoje!',{
-    body: `${aaa.length} Tarefas Pendentes`
-  });
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') {
-      // The tab has become visible so clear the now-stale Notification.
-      notification.close();
-    }
-  });
-}
+// function showNotification(aaa:any){
+//   const notification = new Notification('Você tem tarefas para hoje!',{
+//     body: `${aaa.length} Tarefas Pendentes`
+//   });
+//   document.addEventListener('visibilitychange', () => {
+//     if (document.visibilityState === 'visible') {
+//       // The tab has become visible so clear the now-stale Notification.
+//       notification.close();
+//     }
+//   });
+// }

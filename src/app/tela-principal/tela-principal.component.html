@@ -1,6 +1,6 @@
 <div class="body">
   <div class="head">
-      <h1>Meu Dia</h1>
+      <!-- <h1>Meu Dia</h1> -->
       <h2>{{data}}</h2>
   </div>
 
@@ -57,6 +57,7 @@
       <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
+              <mat-icon class="espaço" fontIcon="add"></mat-icon>
               Adicionar uma nova tarefa
             </mat-panel-title>
           </mat-expansion-panel-header>
@@ -69,12 +70,12 @@
   
               <mat-form-field appearance="fill">
                   <mat-label>Descrição</mat-label>
-                  <input matInput #tipo type="text" placeholder="Descreva em breves palavras a sua tarefa">
+                  <input matInput #tipo type="text">
               </mat-form-field>
 
               <mat-form-field appearance="fill">
                 <mat-label>Data</mat-label>
-                <input matInput #dataFim type="date" placeholder="Escolha a data da tarefa">
+                <input matInput #dataFim type="date">
               </mat-form-field>
 
               <mat-form-field appearance="fill">
@@ -90,7 +91,6 @@
 
               <button mat-button (click)="Enviar(nome.value,tipo.value,coisa.value,dataFim.value)">Enviar</button>
           </div>
-
       </mat-expansion-panel>
 
   </div>
